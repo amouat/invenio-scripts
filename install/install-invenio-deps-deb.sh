@@ -35,9 +35,9 @@ mkdir /etc/apache2/ssl
 pip install celery rq Flask-Script
 
 #following lines check out kn-tem version of invenio and get reqs
-git clone http://invenio-software.org/repo/personal/invenio-kntem invenio
+git clone http://invenio-software.org/repo/invenio invenio
 cd invenio
-git checkout webdeposit
+git checkout next
 #may need to remove libxml lines from requirements.txt
 pip install -r requirements.txt
 pip install -r requirements-extras.txt
