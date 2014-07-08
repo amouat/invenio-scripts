@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 # This script will install B2SHARE from scratch on a centos 6.5 x64 machine
 # It uses invenio and B2SHARE sources from github
@@ -11,19 +11,19 @@ echo "************ Stopping firewall"
 /sbin/chkconfig iptables off
 
 echo "************ Installing wget & git"
-yum install -y wget git vim 
+yum install -y wget git vim
 
 echo "************ Git clone invenio"
 # will be done by install-invenio-deps-rh.sh
 
 echo "************ Git clone invenio-scripts"
-git clone https://github.com/B2SHARE/invenio-scripts.git
+git clone https://github.com/EUDAT-B2SHARE/invenio-scripts.git
 
 echo "************ Git clone b2share"
-git clone https://github.com/B2SHARE/b2share.git
+git clone https://github.com/EUDAT-B2SHARE/b2share.git
 
 echo "************ Git clone b2share.wiki"
-git clone https://github.com/B2SHARE/b2share.wiki.git
+git clone https://github.com/EUDAT-B2SHARE/b2share.wiki.git
 
 echo "************ Installing required OS dependencies"
 ./invenio-scripts/install/install-invenio-deps-rh.sh
@@ -50,7 +50,7 @@ echo "************ Installation done"
 date > /etc/provisioned_at
 
 
-echo 
+echo
 echo "*** If you are configuring a development environment, you should:"
 echo "    1. disable the redis cache (SOME FUNCTIONS CANNOT RUN WITHOUT CACHE):"
 echo '       edit /opt/invenio/lib/python/invenio/config.py and set CFG_FLASK_CACHE_TYPE = "null"'

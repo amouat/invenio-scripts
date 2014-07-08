@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 #run as root
 apt-get update
 apt-get install -y git
@@ -32,7 +32,7 @@ pip install celery rq Flask-Script pyparsing numpy Babel workflow
 
 #Check out next branch of invenio
 git config --global http.sslVerify false
-git clone -v -b next https://github.com/SimpleStore/invenio.git
+git clone -v -b next https://github.com/EUDAT-B2SHARE/invenio.git
 
 cd invenio
 git fetch # just in case, to get then new tags

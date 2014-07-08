@@ -9,7 +9,7 @@ echo "DANGER, WILL ROBINSON!
 
 This script is designed to replace any existing Invenio install. It will drop
 the old database and move the original invenio directory to a backup location.
-As such, it is quite possible it will destroy the existing install and leave 
+As such, it is quite possible it will destroy the existing install and leave
 you with a non-functioning version of Invenio. Please read through this script
 before running it, to make sure you are happy with what it is going to do.
 

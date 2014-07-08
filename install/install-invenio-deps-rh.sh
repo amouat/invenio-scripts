@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 #run as root
 
 MYSQLPASS='invenio'
@@ -32,7 +32,7 @@ chmod g+w /opt
 mkdir -p /opt/invenio/lib/python/invenio
 ln -s /opt/invenio/lib/python/invenio /usr/lib/python2.6/site-packages/invenio
 
-#mysql 
+#mysql
 #better to run mysql_secure_installation
 /sbin/service mysqld start
 chkconfig mysqld on
@@ -40,7 +40,7 @@ chkconfig mysqld on
 /usr/bin/mysqladmin -u root --password=$MYSQLPASS -h localhost.localdomain password $MYSQLPASS
 
 git config --global http.sslVerify false
-git clone -v -b next https://github.com/SimpleStore/invenio.git
+git clone -v -b next https://github.com/EUDAT-B2SHARE/invenio.git
 
 cd invenio
 git fetch # just in case, to get then new tags
