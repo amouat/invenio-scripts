@@ -46,6 +46,7 @@ cd invenio
 git fetch # just in case, to get then new tags
 git checkout tags/b2share-v2 -b bshare-v2
 
+python-pip install --upgrade setuptools
 python-pip install --upgrade distribute
 python-pip install -r requirements.txt
 python-pip install -r requirements-flask.txt
