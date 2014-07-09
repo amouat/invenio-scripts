@@ -3,6 +3,9 @@
 
 MYSQLPASS='invenio'
 
+rpm -Uvh http://dl.atrpms.net/el6-x86_64/atrpms/stable/atrpms-repo-6-7.el6.x86_64.rpm
+rpm -Uvh https://forensics.cert.org/centos/cert/6.5/x86_64/pstotext-1.9-2.1.el6.x86_64.rpm
+
 wget http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 rpm -Uvh epel-release-6-8.noarch.rpm
 yum install -y git python-pip httpd mysql mysql-server gnuplot html2text netpbm \
@@ -11,8 +14,15 @@ yum install -y git python-pip httpd mysql mysql-server gnuplot html2text netpbm 
                giflib-devel sbcl pylint pychecker pyflakes epydoc mod_xsendfile \
                python-BeautifulSoup automake16 gcc python-devel mysql-devel \
                libxslt-devel libxml2-devel gettext-devel python-magic \
-               java-1.7.0-openjdk-devel redis python-redis\
-               automake autoconf unzip
+               java-1.7.0-openjdk-devel redis python-redis automake autoconf \
+               unzip mlocate python-openoffice ffmpeg poppler-utils netpbm-devel \
+               djvulibre ImageMagick
+
+# missing python libraries for invenio
+pip install Gnuplot-py
+pip install pythontex
+pip install ocropy
+
 
 #redis
 /sbin/service redis start
