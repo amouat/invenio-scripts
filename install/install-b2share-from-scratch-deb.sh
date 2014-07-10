@@ -6,15 +6,9 @@
 # Running the script takes close to 2 hours (installs many packages)
 # SEE ALSO the text at the end of this script
 
-echo "************ Stopping firewall"
-/sbin/service iptables stop
-/sbin/chkconfig iptables off
-
 echo "************ Installing wget & git"
-yum install -y wget git vim
-
-echo "************ Git clone invenio"
-# will be done by install-invenio-deps-rh.sh
+DEBIAN_FRONTEND=noninteractive apt-get -q -y -o Dpkg::Options::="--force-confdef" install \
+	vim wget vim
 
 echo "************ Git clone invenio-scripts"
 git clone https://github.com/EUDAT-B2SHARE/invenio-scripts.git
@@ -26,23 +20,23 @@ echo "************ Git clone b2share.wiki"
 git clone https://github.com/EUDAT-B2SHARE/b2share.wiki.git
 
 echo "************ Installing required OS dependencies"
-./invenio-scripts/install/install-invenio-deps-rh.sh
+./invenio-scripts/install/install-invenio-deps-deb.sh
 
 echo "************ Installing invenio base"
 # overwrite the invenio config file
 cp invenio-scripts/install/invenio.conf invenio/config/
 cp invenio-scripts/install/invenio-local.conf invenio/
 cp invenio-scripts/install/collections.sql invenio/
-(cd invenio && ../invenio-scripts/install/wipe-and-install-invenio-rh.sh --no-confirm)
+(cd invenio && ../invenio-scripts/install/wipe-and-install-invenio.sh --no-confirm)
 
 echo "************ Deploying b2share overlay"
-(cd b2share && ./deployment/deploy_overlay-rh.sh)
+(cd b2share && ./deployment/deploy_overlay.sh)
 
 echo "************ Deploying b2share document files"
 (cd b2share && ./deployment/update-help.sh)
 
 echo "************ Starting invenio processes"
-./invenio-scripts/install/start-daemons-rh.sh
+./invenio-scripts/install/start-daemons.sh
 # For guest user garbage­collector, you need also this:
 sudo -u apache /opt/invenio/bin/inveniogc -guests -s5m -uadmin
 
